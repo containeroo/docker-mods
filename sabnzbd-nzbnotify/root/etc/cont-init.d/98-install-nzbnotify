@@ -1,0 +1,14 @@
+#!/usr/bin/with-contenv bash
+
+set -o errexit
+
+apt-get update
+apt-get install unzip
+
+curl --output /tmp/nzb-notify.zip https://codeload.github.com/caronc/nzb-notify/zip/refs/heads/master
+
+unzip /tmp/nzb-notify.zip -d /tmp
+
+ls /tmp/nzb-notify-master | grep -v "requirements.txt" | xargs -rn1 -I{} mv /tmp/nzb-notify-master/{} ~/tmp
+
+pip install -r /tmp/nzb-notify-master/requirements.txt
