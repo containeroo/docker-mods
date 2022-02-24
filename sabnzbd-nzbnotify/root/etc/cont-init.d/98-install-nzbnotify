@@ -2,8 +2,13 @@
 
 set -o errexit
 
-apt-get update
-apt-get install -y unzip
+if [ -f /usr/bin/apt-get ]; then
+  apt-get update
+  apt-get install -y unzip
+  apt-get clean
+elif [ -f /usr/bin/apk ]; then
+  apk --update add unzip --no-cache
+fi
 
 curl --output /tmp/nzb-notify.zip https://codeload.github.com/caronc/nzb-notify/zip/refs/heads/master
 
