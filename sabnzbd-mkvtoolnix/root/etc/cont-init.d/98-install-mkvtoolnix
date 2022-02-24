@@ -2,10 +2,12 @@
 
 set -o errexit
 
-if [ -f /usr/bin/apt-get ]; then
+if command -v apt-get >/dev/null; then
   apt-get update
   apt-get install -y mkvtoolnix
   apt-get clean
-elif [ -f /usr/bin/apk ]; then
+fi
+
+if command -v apk >/dev/null; then
   apk --update add mkvtoolnix --no-cache
 fi
