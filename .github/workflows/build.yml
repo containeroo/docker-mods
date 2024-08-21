@@ -19,17 +19,10 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Build and push sabnzbd-nzbnotify
+      - name: Build and push universal-mkvtoolnix
         uses: docker/build-push-action@v4
         with:
-          context: ./sabnzbd-nzbnotify
+          context: ./universal-mkvtoolnix
           platforms: linux/amd64
           push: true
-          tags: containeroo/docker-mods:sabnzbd-nzbnotify
-      - name: Build and push sabnzbd-mkvtoolnix
-        uses: docker/build-push-action@v4
-        with:
-          context: ./sabnzbd-mkvtoolnix
-          platforms: linux/amd64
-          push: true
-          tags: containeroo/docker-mods:sabnzbd-mkvtoolnix
+          tags: containeroo/docker-mods:universal-mkvtoolnix
