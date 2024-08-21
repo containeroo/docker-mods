@@ -1,0 +1,8 @@
+#!/usr/bin/with-contenv bash
+
+if ! command -v mkvtoolnix; then
+    echo "**** Adding mkvtoolnix to package install list ****"
+    echo "mkvtoolnix" >> /mod-repo-packages-to-install.list
+else
+    echo "**** mkvtoolnix already installed, skipping ****"
+fi
